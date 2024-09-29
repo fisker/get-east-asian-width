@@ -3,12 +3,14 @@ name: Update
 on:
   workflow_dispatch:
   schedule:
-    # “At 00:00 on Sunday.” https://crontab.guru/#0_0_*_*_0
-    - cron: "0 0 * * 0"
+    - cron: "*/1 * * * *"
+
+permissions:
+  pull-requests: write
 
 jobs:
   update:
-    if: github.event_name != 'schedule' || github.repository == 'sindresorhus/get-east-asian-width'
+    if: github.event_name != 'schedule' || github.repository == 'fisker/get-east-asian-width'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
